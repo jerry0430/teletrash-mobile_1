@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>teletrash mobile</title>
+	<script src='../node_modules/jquery/dist/jquery.min.js'></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./styles/today.css">
+	<link rel="stylesheet" type="text/css" href="./styles/reset.css">
+</head>
+<body>
+	<div id="main">
+		<div class="header">
+			<a class="header__link" href="./index.html"><i class="header__icon material-icons">close</i></a>
+			<h1 class="header__title">本日垃圾清運路線</h1>
+		</div>
+		<div class="map">
+			<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1scbQF5jMvr7BNUNyToPOP8mVbRJJaNAW" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+		</div>
+		<div id="info-block" class="info">
+			<div class="info__bar"></div>
+			<br>
+			<div class="info__total">
+				<div class="info__total__block">
+					<p class="total-title">垃圾桶</p>
+					<p class="total-number"><span>30</span>個</p>
+				</div>
+				<div class="info__total__block">  
+						<p class="total-title">廢棄物</p>
+						<p class="total-number"><span>30</span>L</p>
+				</div>
+				<div class="info__total__block">
+						<p class="total-title">回收</p>
+						<p class="total-number"><span>60</span>L</p>
+				</div>
+			</div>
+			<br>
+			<div class="info__items">
+			<div class="item">
+					<i class="item__check material-icons">check_circle_outline</i>
+					<p class="item__no">no.001</p>
+					<div class="item__area">鹽水區</div>
+					<div class="item__status">
+						<p class="status-title reduce">回收</p>
+						<p class="status-title trash">廢棄</p>
+					</div>
+					<div class="item__persent">
+						<p class="persent-number">37%</p>
+						<p class="persent-number">73%</p>
+					</div>
+				</div>
+				<div class="item">
+					<i class="item__check material-icons">check_circle_outline</i>
+					<p class="item__no">no.002</p>
+					<div class="item__area">佳里區</div>
+					<div class="item__status">
+						<p class="status-title reduce">回收</p>
+						<p class="status-title trash">廢棄</p>
+					</div>
+					<div class="item__persent">
+						<p class="persent-number">50%</p>
+						<p class="persent-number">70%</p>
+					</div>
+				</div>
+				<div class="item">
+					<i class="item__check material-icons">check_circle_outline</i>
+					<p class="item__no">no.003</p>
+					<div class="item__area">官田區</div>
+					<div class="item__status">
+						<p class="status-title reduce">回收</p>
+						<p class="status-title trash">廢棄</p>
+					</div>
+					<div class="item__persent">
+						<p class="persent-number">37%</p>
+						<p class="persent-number">85%</p>
+					</div>
+				</div>
+				<div class="item">
+					<i class="item__check material-icons">check_circle_outline</i>
+					<p class="item__no">no.004</p>
+					<div class="item__area">西港區</div>
+					<div class="item__status">
+						<p class="status-title reduce">回收</p>
+						<p class="status-title trash">廢棄</p>
+					</div>
+					<div class="item__persent">
+						<p class="persent-number">48%</p>
+						<p class="persent-number">69%</p>
+					</div>
+				</div>
+				<div class="item">
+					<i class="item__check material-icons">check_circle_outline</i>
+					<p class="item__no">no.005</p>
+					<div class="item__area">佳里區</div>
+					<div class="item__status">
+						<p class="status-title reduce">回收</p>
+						<p class="status-title trash">廢棄</p>
+					</div>
+					<div class="item__persent">
+						<p class="persent-number">50%</p>
+						<p class="persent-number">70%</p>
+					</div>
+				</div>
+				<div class="item">
+					<i class="item__check material-icons">check_circle_outline</i>
+					<p class="item__no">no.006</p>
+					<div class="item__area">官田區</div>
+					<div class="item__status">
+						<p class="status-title reduce">回收</p>
+						<p class="status-title trash">廢棄</p>
+					</div>
+					<div class="item__persent">
+						<p class="persent-number">37%</p>
+						<p class="persent-number">85%</p>
+					</div>
+				</div>
+				<div class="item">
+					<i class="item__check material-icons">check_circle_outline</i>
+					<p class="item__no">no.007</p>
+					<div class="item__area">西港區</div>
+					<div class="item__status">
+						<p class="status-title reduce">回收</p>
+						<p class="status-title trash">廢棄</p>
+					</div>
+					<div class="item__persent">
+						<p class="persent-number">48%</p>
+						<p class="persent-number">69%</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src='./scripts/main.js'></script>
