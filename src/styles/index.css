@@ -120,6 +120,42 @@ body {
     justify-content: center;
     align-items: center;
 }
+.item__no_red{
+    width: 46px;
+    height: 21px;
+    border-radius: 12px;
+    background-color: #ea6767;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item__no_yellow{
+    width: 46px;
+    height: 21px;
+    border-radius: 12px;
+    background-color: #fdac2c;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item__yse{
+    width: 46px;
+    height: 21px;
+    border-radius: 12px;
+    background-color: #fdac2c;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .item__area{
     font-size: 14px;
 }
