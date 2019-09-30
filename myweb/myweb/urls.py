@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index,name='index'),
     path('today/', views.today,name='today'),
+    path('post/<int:numms>', views.post_data,name='post_data'),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_URL)
