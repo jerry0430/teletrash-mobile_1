@@ -6,3 +6,8 @@ class DataInfo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return nums_title
+class Data_2Info(models.Model):
+    nums_title = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return nums_title

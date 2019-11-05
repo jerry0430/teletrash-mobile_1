@@ -1,17 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>teletrash mobile</title>
-	<script src='../node_modules/jquery/dist/jquery.min.js'></script>
+	<script src={% static 'node_modules/jquery/dist/jquery.min.js' %}></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="./styles/today.css">
-	<link rel="stylesheet" type="text/css" href="./styles/reset.css">
+	<link rel="stylesheet" type="text/css" href={% static "styles/today.css" %}>
+	<link rel="stylesheet" type="text/css" href={% static "styles/reset.css" %}>
 </head>
 <body>
 	<div id="main">
 		<div class="header">
-			<a class="header__link" href="./index.html"><i class="header__icon material-icons">close</i></a>
+			<a class="header__link" href="/index_m"><i class="header__icon material-icons">close</i></a>
 			<h1 class="header__title">本日垃圾清運路線</h1>
 		</div>
 		<div class="map">
@@ -39,16 +40,21 @@
 			
 				<div class="item">
 					<i class="item__check material-icons">check_circle_outline</i>
-					
-					<p class="item__no_yellow">no.002</p>
+					{% if data.nums_title > 70 %}
+					<p class="item__no_red">no.000</p>
+					{% elif 50 < data.nums_title and data.nums_title <= 70 %}
+					<p class="item__no_yellow">no.000</p>
+					{% else %}
+					<p class="item__no">no.000</p>
+					{% endif %}
 					<div class="item__area">佳里區</div>
 					<div class="item__status">
 						<p class="status-title reduce">回收</p>
 						<p class="status-title trash">廢棄</p>
 					</div>
 					<div class="item__persent">
-						<p class="persent-number">50%</p>
-						<p class="persent-number">70%</p>
+						<p class="persent-number">{{data.nums_title}}%</p>
+						<p class="persent-number">{{data_2.nums_title}}%</p>
 					</div>
 				</div>
 				<div class="item">
@@ -99,4 +105,4 @@
 		</div>
 	</div>
 </body>
-<script src='./scripts/main.js'></script>
+<script src={% static 'scripts/main.js' %}></script>

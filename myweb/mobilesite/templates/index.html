@@ -1,122 +1,424 @@
 {% load static %}
 <!DOCTYPE html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<title>teletrash mobile</title>
-	<script src={% static "node_modules/jquery/dist/jquery.min.js" %}></script>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href={% static "styles/index.css" %}>
-	<link rel="stylesheet" type="text/css" href={% static "styles/reset.css" %}>
-</head>
-<body>
-	<div id="main">
-		<div class="header">
-			<i class="header__icon material-icons">menu</i>
-			<h1 class="header__title">所有負責垃圾桶</h1>
-		</div>
-		<div class="map">
-			<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1scbQF5jMvr7BNUNyToPOP8mVbRJJaNAW" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-		</div>
-		<div id="info-block" class="info">
-			<div class="info__bar"></div>
-			<div class="info__total">
-				<div class="info__total__block">
-					<p class="total-title"><i class="red material-icons">delete</i>70~100%</p>
-					<p class="total-number">2</p>
-				</div>
-				<div class="info__total__block">
-					<p class="total-title"><i class="yellow material-icons">delete</i>50~70%</p>
-					<p class="total-number">3</p>
-				</div>
-				<div class="info__total__block">
-					<p class="total-title"><i class="green material-icons">delete</i>0~50%</p>
-					<p class="total-number">1</p>
-				</div>
-			</div>
-			<br><br><br><br><br><br>
-			<div class="info__items">
-			<div class="item">
-				    
-					<p class="item__no">no.001</p>
-					<div class="item__area">鹽水區</div>
-					<div class="item__status">
-						<p class="status-title reduce">回收</p>
-						<p class="status-title trash">廢棄</p>
-					</div>
-					<div class="item__persent">
-						<p class="persent-number">37%</p>
-						<p class="persent-number">40%</p>
-					</div>
-				</div>
-				<div class="item">
-					
-					<p class="item__no_yellow" >no.002</p>
-					<div class="item__area">佳里區</div>
-					<div class="item__status">
-						<p class="status-title reduce">回收</p>
-						<p class="status-title trash">廢棄</p>
-					</div>
-					<div class="item__persent">
-						<p class="persent-number">50%</p>
-						<p class="persent-number">70%</p>
-					</div>
-				</div>
-				<div class="item">
-					
-					<p class="item__no_red">no.003</p>
-					<div class="item__area">官田區</div>
-					<div class="item__status">
-						<p class="status-title reduce">回收</p>
-						<p class="status-title trash">廢棄</p>
-					</div>
-					<div class="item__persent">
-						<p class="persent-number">37%</p>
-						<p class="persent-number">85%</p>
-					</div>
-				</div>
-				<div class="item">
-					
-					<p class="item__no_yellow">no.004</p>
-					<div class="item__area">西港區</div>
-					<div class="item__status">
-						<p class="status-title reduce">回收</p>
-						<p class="status-title trash">廢棄</p>
-					</div>
-					<div class="item__persent">
-						<p class="persent-number">48%</p>
-						<p class="persent-number">69%</p>
-					</div>
-				</div>
-				<div class="info__items">
-					<div class="item">
-						
-						<p class="item__no_red">no.005</p>
-						<div class="item__area">永康區</div>
-						<div class="item__status">
-							<p class="status-title reduce">回收</p>
-							<p class="status-title trash">廢棄</p>
-						</div>
-						<div class="item__persent">
-							<p class="persent-number">50%</p>
-							<!-- item 改#ea6767 -->
-							<p class="persent-number">80%</p>
-						</div>
-					</div>
-					
-				</div>
-				<div class="info__items">
-					<div class="item">
-						</div>
-				</div>
-				<div class="info__items">
-						<div class="item">
-							</div>
-				</div>
-						
-			</div>
-		</div>
-		<a href="/today.html" class="today-button">本日清運路線</a>
-	</div>
-</body>
-<script src={% static "scripts/main.js" %}></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>teletrash web</title>
+    <script src={% static 'node_modules/jquery/dist/jquery.min.js' %}></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href={% static "style/reset.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "style/menu.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "style/pop-up.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "style/index.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "style/person.css" %}>
+  </head>
+  <body>
+    <div id="menu"></div>
+      <!-- <div class="menu__logo">
+        <img src="./assets/tele-logo.png">
+      </div>
+      <div class="menu__navi">
+        <a href="./index.html" id="navi-index" class="menu__navi__item">
+          <i class="menu__navi__item__icon material-icons">insert_chart</i>
+          <p class="menu__navi__item__text">首頁</p>
+        </a>
+        <a href="./person.html" id="navi-person" class="menu__navi__item">
+          <i class="menu__navi__item__icon material-icons">person</i>
+          <p class="menu__navi__item__text">人員管理</p>
+        </a>
+        <a href="./area.html" id="navi-area" class="menu__navi__item">
+          <i class="menu__navi__item__icon material-icons">map</i>
+          <p class="menu__navi__item__text">區域管理</p>
+        </a>
+        <a href="./trash.html" id="navi-trash" class="menu__navi__item">
+          <i class="menu__navi__item__icon material-icons">delete</i>
+          <p class="menu__navi__item__text">垃圾桶管理</p>
+        </a>
+      </div>
+      <div class="menu__user">
+        <i class="menu__user__icon material-icons">account_circle</i>
+        <p class="menu__user__text">王小明</p>
+      </div> -->
+   
+    <div class="main">
+      <div class="main__block left">
+        <h2 class="main__block__title">緊急清運</h2>
+
+        <!-- 遷入資料-->
+        <div class="left__item">
+          <div class="left__item__no">no.000</div>
+          <div class="left__item__status">
+            <div class="left__item__status__dot"></div>
+            <div class="left__item__status__text">回收</div>
+          </div>
+          <!-- 本數值需遷入資料 -->
+          <div class="left__item__persent">{{data.nums_title}}%</div>
+          
+          <div class="left__item__image">
+            <img src={% static "assets/index-red.png" %}>
+          </div>
+          
+          <div class="left__item__name">王小明</div>
+          <div class="left__item__area">東區</div>
+          <!-- 這邊要開小地圖-->
+          <i class="left__item__location material-icons">room</i>
+          <!-- 要連接-->
+          <i onclick="clickItem()" class="left__item__arrow material-icons">arrow_forward_ios</i>
+        </div>
+         <!-- 遷入資料-->
+        
+        <!-- 遷入資料-->
+        <div class="left__item">
+          <div class="left__item__no">no.000</div>
+          <div class="left__item__status">
+            <div class="left__item__status__dot"></div>
+            <div class="left__item__status__text">廢棄</div>
+          </div>
+          <!-- 本數值需遷入資料 -->
+          <div class="left__item__persent">{{data_2.nums_title}}%</div>
+          <div class="left__item__image">
+            <img src={% static "assets/index-yellow.png" %}>
+          </div>
+          <div class="left__item__name">王小明</div>
+          <div class="left__item__area">東區</div>
+          <i class="left__item__location material-icons">room</i>
+          <i onclick="clickItem()" class="left__item__arrow material-icons">arrow_forward_ios</i>
+        </div>
+         <!-- 遷入資料-->
+        <div class="left__item">
+          <div class="left__item__no">no.002</div>
+          <div class="left__item__status">
+            <div class="left__item__status__dot"></div>
+            <div class="left__item__status__text">廢棄</div>
+          </div>
+          <div class="left__item__persent">69%</div>
+          <div class="left__item__image">
+            <img src={% static "assets/index-yellow.png" %}>
+          </div>
+          <div class="left__item__name">王小明</div>
+          <div class="left__item__area">佳里區</div>
+          <i class="left__item__location material-icons">room</i>
+          <i onclick="clickItem()" class="left__item__arrow material-icons">arrow_forward_ios</i>
+        </div>
+        <div class="left__item">
+          <div class="left__item__no">no.003</div>
+          <div class="left__item__status">
+            <div class="left__item__status__dot"></div>
+            <div class="left__item__status__text">廢棄</div>
+          </div>
+          <div class="left__item__persent">85%</div>
+          <div class="left__item__image">
+            <img src={% static "assets/index-red.png" %}>
+          </div>
+          <div class="left__item__name">王小明</div>
+          <div class="left__item__area">官田區</div>
+          <i class="left__item__location material-icons">room</i>
+          <i onclick="clickItem()" class="left__item__arrow material-icons">arrow_forward_ios</i>
+          
+        </div>
+        <div class="left__item">
+          <div class="left__item__no">no.004</div>
+          <div class="left__item__status">
+            <div class="left__item__status__dot"></div>
+            <div class="left__item__status__text">廢棄</div>
+          </div>
+          <div class="left__item__persent">69%</div>
+          <div class="left__item__image">
+            <img src={% static "assets/index-yellow.png" %}>
+          </div>
+          <div class="left__item__name">王小明</div>
+          <div class="left__item__area">西港區</div>
+          <i class="left__item__location material-icons">room</i>
+          <i onclick="clickItem()" class="left__item__arrow material-icons">arrow_forward_ios</i>
+        </div>
+        
+        <div class="left__item">
+          <div class="left__item__no">no.005</div>
+          <div class="left__item__status">
+            <div class="left__item__status__dot"></div>
+            <div class="left__item__status__text">廢棄</div>
+          </div>
+          <div class="left__item__persent">80%</div>
+          <div class="left__item__image">
+            <img src={% static "assets/index-red.png" %}>
+          </div>
+          <div class="left__item__name">王小明</div>
+          <div class="left__item__area">永康區</div>
+          <i class="left__item__location material-icons">room</i>
+          <button onclick="clickLocation(this)" class="detail__item__location material-icons">room</button>
+          <i onclick="clickItem()" class="left__item__arrow material-icons">arrow_forward_ios</i>
+          
+        </div>
+        <div id="pop-up" class="popup">
+            <div class="arrow-int"></div>
+            <div class="arrow-out"></div>
+            <div class="popup-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4944.707877303902!2d120.22244528650444!3d22.95915341148483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e743e9fc588ed%3A0x2f4aebe7c86b517f!2zNzE35Y-w5Y2X5biC5LuB5b635Y2A5LuB5ZKM6YeM!5e0!3m2!1szh-TW!2stw!4v1567429832043!5m2!1szh-TW!2stw" width="100%" height="138" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+            <p class="popup-text">717台南市仁德區仁和里</p>
+        </div>
+        
+        <!--
+        <div class="left__item">
+          <div class="left__item__no">no.000</div>
+          <div class="left__item__status">
+            <div class="left__item__status__dot"></div>
+            <div class="left__item__status__text">回收</div>
+          </div>
+          <div class="left__item__persent">83%</div>
+          <div class="left__item__image">
+            <img src="./assets/index-red.png">
+          </div>
+          <div class="left__item__name">王小明</div>
+          <div class="left__item__area">區域名稱</div>
+          <i class="left__item__location material-icons">room</i>
+          <i onclick="clickItem()" class="left__item__arrow material-icons">arrow_forward_ios</i>
+        </div>
+          -->
+      </div>
+    
+      <div class="main__block right">
+        <div class="right__header">
+          <h2 class="main__block__title">垃圾種類</h2>
+          <select class="selector">
+            <option>2019/11</option>
+            <option>2019/10</option>
+            <option>2019/09</option>
+          </select>
+          <div class="selector-arrow"></div>
+        </div>
+        <div class="right__wrap">
+          <div class="right__wrap__image">
+            <img src={% static "assets/index-right.png" %}>
+          </div>
+          <div class="right__wrap__items">
+              <div class="item">
+                <div class="item__dot gray"></div>
+                <p class="item__text">廢棄物</p>
+              </div>
+              <div class="item">
+                <div class="item__dot green"></div>
+                <p class="item__text">塑膠類</p>
+              </div>
+              <div class="item">
+                <div class="item__dot yellow"></div>
+                <p class="item__text">紙類</p>
+              </div>
+              <div class="item">
+                <div class="item__dot red"></div>
+                <p class="item__text">金屬類</p>
+              </div>
+              <div class="item">
+                <div class="item__dot blue"></div>
+                <p class="item__text">玻璃類</p>
+              </div>
+              <div class="item">
+                <div class="item__dot purple"></div>
+                <p class="item__text">紙版類</p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="main__block middle">
+        <div class="middle__header">
+          <div class="middle__header__left">
+            <h2 class="main__block__title">垃圾量</h2>
+            <select class="selector">
+              <option>2019</option>
+              <option>2018</option>
+              <option>2017</option>
+            </select>
+            <div class="selector-arrow"></div>
+          </div>
+          <div class="middle__header__right">
+            <div class="category__item">
+              <div class="item__dot green"></div>
+              <p class="item__text">總量</p>
+            </div>
+            <div class="category__item">
+              <div class="item__dot yellow"></div>
+              <p class="item__text">垃圾量</p>
+            </div>
+            <div class="category__item">
+              <div class="item__dot blue"></div>
+              <p class="item__text">回收量</p>
+            </div>
+          </div>
+        </div>
+        <div class="middle__image">
+          <img src={% static "assets/index-middle.png" %}>
+        </div>
+      </div>
+      <div class="main__block bottom">
+        <div class="bottom__left">
+          <h2 class="main__block__title">回收正確率</h2>
+          <div class="bottom__left__image">
+            <img src={% static "assets/index-bottom.png" %}>
+          </div>
+        </div>
+        <div class="bottom__right">
+          <h2 class="main__block__title">區域排名</h2>
+          <div class="rank">
+            <div class="rank__text">
+              <p class="rank__title">佳里區</p>
+              <p class="rank__persent">40%</p>
+            </div>
+            <div class="rank__wrap">
+              <div class="rank__wrap__color"></div>
+            </div>
+            <i class="rank__arrow material-icons">arrow_forward_ios</i>
+          </div>
+          <div class="rank">
+            <div class="rank__text">
+              <p class="rank__title">官田區</p>
+              <p class="rank__persent">60%</p>
+            </div>
+            <div class="rank__wrap">
+              <div class="rank__wrap__color"></div>
+            </div>
+            <i class="rank__arrow material-icons">arrow_forward_ios</i>
+          </div>
+          <div class="rank">
+            <div class="rank__text">
+              <p class="rank__title">西港區</p>
+              <p class="rank__persent">56%</p>
+            </div>
+            <div class="rank__wrap">
+              <div class="rank__wrap__color"></div>
+            </div>
+            <i class="rank__arrow material-icons">arrow_forward_ios</i>
+          </div>
+          <div class="rank">
+            <div class="rank__text">
+              <p class="rank__title">永康區</p>
+              <p class="rank__persent">42%</p>
+            </div>
+            <div class="rank__wrap">
+              <div class="rank__wrap__color"></div>
+            </div>
+            <i class="rank__arrow material-icons">arrow_forward_ios</i>
+          </div>
+          <div class="rank">
+            <div class="rank__text">
+              <p class="rank__title">東區</p>
+              <p class="rank__persent">90%</p>
+            </div>
+            <div class="rank__wrap">
+              <div class="rank__wrap__color"></div>
+            </div>
+            <i class="rank__arrow material-icons">arrow_forward_ios</i>
+          </div>
+          <div class="rank">
+            <div class="rank__text">
+              <p class="rank__title">東西區</p>
+              <p class="rank__persent">68%</p>
+            </div>
+            <div class="rank__wrap">
+              <div class="rank__wrap__color"></div>
+            </div>
+            <i class="rank__arrow material-icons">arrow_forward_ios</i>
+          </div>
+          <div class="rank">
+            <div class="rank__text">
+              <p class="rank__title">白河區</p>
+              <p class="rank__persent">42%</p>
+            </div>
+            <div class="rank__wrap">
+              <div class="rank__wrap__color"></div>
+            </div>
+            <i class="rank__arrow material-icons">arrow_forward_ios</i>
+          </div>
+          <div class="rank">
+            <div class="rank__text">
+              <p class="rank__title">南區</p>
+              <p class="rank__persent">90%</p>
+            </div>
+            <div class="rank__wrap">
+              <div class="rank__wrap__color"></div>
+            </div>
+            <i class="rank__arrow material-icons">arrow_forward_ios</i>
+          </div>
+          <div class="rank">
+            <div class="rank__text">
+              <p class="rank__title">關廟區</p>
+              <p class="rank__persent">60%</p>
+            </div>
+            <div class="rank__wrap">
+              <div class="rank__wrap__color"></div>
+            </div>
+            <i class="rank__arrow material-icons">arrow_forward_ios</i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cover-popup">
+      <div onclick="closePopup()" class="mask"></div>
+      <div class="top">
+        <div class="top__header">
+          <p class="header__no">no.000</p>
+          <p class="header__text">負責人<span>王小明</span></span></p>
+          <p class="header__text">區域<span>海安路</span></p>
+          <button class="header__loaction material-icons">room</button>
+          <button class="header__button">
+            <i class="button-icon material-icons">edit</i>
+            編輯
+          </button>
+        </div>
+        <div class="top__total">
+         
+          <div class="top__total__block">
+            <p class="block__title">目前垃圾量</p>
+            <p class="block__content"><span>{{data.nums_title}}</span>%</p>
+          </div>
+          
+          <div class="top__total__block">
+            <p class="block__title blue-icon">回收物</p>
+            <p class="block__content"><span>{{raw_L}}</span>L</p>
+          </div>
+        
+          
+          <div class="top__total__block">
+            <p class="block__title yellow-icon">廢棄物</p>
+            <p class="block__content"><span>{{raw2_L}}</span>L</p>
+          </div>
+        
+        </div>
+        <div class="top__middle">
+          <div class="top__middle__block">
+            <div class="title__wrap">
+              <h2 class="title">回收正確率</h2>
+              <input id="correct-reduce" class="date-input" type="date">
+            </div>
+            <div class="image__wrap">
+              <img src={% static "assets/popup-image-1.png" %}>
+            </div>
+          </div>
+          <div class="top__middle__block">
+            <div class="title__wrap">
+              <h2 class="title">使用頻率</h2>
+              <input id="use-frequency" class="date-input" type="date">
+            </div>
+            <div class="image__wrap">
+              <img src={% static "assets/popup-image-1.png" %}>
+            </div>
+          </div>
+        </div>
+        <div class="top__bottom">
+          <div class="title__wrap">
+            <h2 class="title">垃圾量</h2>
+            <input id="trash-value" class="date-input" type="date">
+          </div>
+          <div class="image__wrap">
+            <img src={% static "assets/popup-image-2.png" %}>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script src={% static 'scripts/menu.js' %}></script>
+<script src={% static 'scripts/index.js' %}></script>
+<script src={% static 'scripts/person.js' %}></script>
+<script src={% static 'scripts/pop-up.js' %}></script>

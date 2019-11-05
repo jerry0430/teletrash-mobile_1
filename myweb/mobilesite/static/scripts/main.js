@@ -10,6 +10,7 @@ for(let i = 0; i<numberEles.length; i++){
     }
 }
 
+
 let startx, starty
 let parentEle = null
 const infoEle = document.getElementById('info-block')
